@@ -15,18 +15,6 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="driver" class="form-control" placeholder="" value="">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" name="driver" class="form-control" placeholder="" value="">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
                         <label>first Name</label>
                         <input type="text" name="first_name" class="form-control" placeholder="" value="">
                       </div>
@@ -43,22 +31,21 @@
                         <input type="text" name="email" class="form-control" placeholder="" value="">
                       </div>
                     </div>
+                    
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="text" name="phone" class="form-control" placeholder="" value="">
+                      </div>
+                    </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Region</label>
-                        <input type="text" name="Region" class="form-control" placeholder="" value="">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="driver" class="form-control" placeholder="" value="">
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="driver" class="form-control" placeholder="" value="">
+                        <select type="text" name="region_id" class="form-control">
+                          @foreach ($region as $val)
+                          <option value="{{$val->id}}">{{$val->region_name}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>

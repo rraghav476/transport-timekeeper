@@ -10,7 +10,7 @@
                 <h5 class="title">Edit Company</h5>
               </div>
               <div class="card-body">
-                <form action="{{ url('company/update')."/".$company->id }}" method="post">
+                <form action="{{ url('company/update').'/'.$company->id }}" method="post">
                     @csrf
                  <div class="row">
                     <div class="col-md-12">

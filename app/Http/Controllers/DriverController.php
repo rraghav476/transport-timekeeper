@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class DriverController extends Controller
     }
 
     public function addDriverView(){
-        return view("Driver.add");
+        $region = Region::get();
+        return view("Driver.add",["region"=>$region]);
     }
 
     public function addDriver(Request $request){
