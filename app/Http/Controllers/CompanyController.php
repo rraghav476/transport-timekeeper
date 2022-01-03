@@ -17,24 +17,35 @@ class CompanyController extends Controller
     }
 
     public function addCompany(Request $request){
-        dd($request);
+        // dd($request);
+        $company = new Company;
+        $company->company_name = $request->company_name;
+        $company->save();
+        return redirect()->route('company', app()->getLocale())->with('success', 'Company Successfully Added.');
     }
 
     public function editCompanyView($id){
-        $company = Company::find($id);
-        return view("company.edit");
+        $company =  Company::find($id);
+        return view('company.edit',["company"=>$company]);
     }
 
     public function updateCompany(Request $request,$id){
-        dd($request);
+        // dd($request);
+        Company::where("id", $id)->update(["company_name" => $request->input("company_name")]);
+        return redirect()->route('company', app()->getLocale())->with('success', 'Company Successfully Updated.');
     }
 
     public function statusCompany($id){
-        dd("toggle status");
+        $company =  Company::find($id);
+        
+        $company->status = $company->status == 1 ? 0 : 1;
+        $data = $company->save();
+        return redirect()->route('company', app()->getLocale())->with('success', 'Company Status Successfully Updated.');
     }
 
     public function deleteCompany($id){
-        dd("delete id form here");
+        Company::where("id", $id)->delete();
+        return redirect()->route('company', app()->getLocale())->with('success', 'Company Successfully Deleted.');
     }
 
 }

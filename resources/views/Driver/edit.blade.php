@@ -1,1 +1,4 @@
-edit user here.
+@extends("layouts.adminDashboard")
+@section("content")
+
+@endsection

@@ -17,23 +17,32 @@ class RegionController extends Controller
     }
 
     public function addRegion(Request $request){
-        dd($request);
+        $region = new Region;
+        $region->region_name = $request->input("region_name");
+        $region->save();
+        return redirect()->route('region', app()->getLocale())->with('success', 'Region Successfully Added.');   
     }
 
-    public function editRegionView(){
-        return view("Region.edit");
+    public function editRegionView($id){
+        $region =  Region::find($id);
+        return view('region.edit',["region"=>$region]);
     }
 
     public function updateRegion(Request $request){
-        dd($request);
+        Region::where("id", $request->id)->update(["region_name" => $request->input("region_name")]);
+        return redirect()->route('region', app()->getLocale())->with('success', 'Region Successfully Updated.');   
     }
 
     public  function statusRegion($id)
     {
-        dd("togal status of id this.",$id);
+        $region =  Region::find($id);
+        $region->status = $region->status ==1?0:1;
+        $data = $region->save();
+        return redirect()->route('region', app()->getLocale())->with('success', 'Region Status Successfully Updated.');   
     }
 
     public function deleteRegion($id){
-        dd("softdelete or harddelete ask");
+        Region::where("id", $id)->delete();
+        return redirect()->route('region', app()->getLocale())->with('success', 'Region Successfully Deleted.');   
     }
 }
